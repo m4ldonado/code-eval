@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+foreach(1..99){
+        next if($_ % 2 == 0);
+        print "$_ \n";
+}
