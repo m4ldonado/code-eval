@@ -1,0 +1,21 @@
+open(INFILE, "<", $ARGV[0]);
+while (my $line = <INFILE>) {
+        my @elements = ();
+        my @instructions = ();
+        $line =~ /(.*)?:/;
+        @elements = split(' ', $1);
+        if ($line =~ m/,/){
+                $line =~ /: (.*)/;
+                @instructions = split(',', $1);
+                foreach(@instructions){
+                        my @temp = split('-', $_);
+                        ($elements[$temp[0]], $elements[$temp[1]]) = ($elements[$temp[1]], $elements[$temp[0]]);
+                }
+        }
+        else{
+                $line =~ /: (.*)/;
+                my @temp = split('-', $1);
+                ($elements[$temp[0]], $elements[$temp[1]]) = ($elements[$temp[1]], $elements[$temp[0]]);
+        }
+        print join(' ', @elements), "\n";
+}
