@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  { 
+        chomp $line;
+        my @numberlist = ();
+        $numberlist[0] = $line;
+        my $count = 1;
+        my $nextnumber = 0;
+        my $answer = -1;
+        while ($answer == -1){          
+                $nextnumber = 0;
+                my @temp = ();
+                @temp = split('', $numberlist[$count - 1]);
+                foreach my $addme(@temp){
+                        $nextnumber += $addme ** 2;
+                }
+                $numberlist[$count] = $nextnumber;
+                $count++;
+                if($nextnumber == 1){
+                        $answer = 1;    
+                }
+                elsif($nextnumber == 4){
+                        $answer = 0;
+                }
+        }
+        print "$answer \n";
+}
