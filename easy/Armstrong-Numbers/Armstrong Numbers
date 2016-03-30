@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        chomp($line);
+        my $total = 0;
+        my @digits = split('', $line);
+        foreach(0..$#digits){
+                $total += $digits[$_] ** length($line);
+        }
+        if($total == $line){
+                print "True \n";
+        }
+        else{
+                print "False \n";
+        }
+}
