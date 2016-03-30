@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  {
+        my $output = lc($line);
+        print $output;
+}
