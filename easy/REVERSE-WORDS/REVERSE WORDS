@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+my $output;
+while( my $line = <INFILE>)  {   
+        my @array = split(' ', $line);
+        @array = reverse @array;
+        foreach(@array){
+                $output .= "$_ ";
+        }
+        $output .= "\n";
+}
+$output =~ s/\n\n+/\n/g;
+$output =~ s/ $//mg;
+print $output;
