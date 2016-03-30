@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  {   
+        my $output = 0;
+        my @array = split('', $line);
+        foreach(@array){
+                $output += "$_";
+        }
+        print $output .= "\n";
+}
