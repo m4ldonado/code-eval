@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        print 1 - $line % 2, "\n";
+}
