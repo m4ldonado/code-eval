@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        next if($line =~ m/^$/);
+        chomp($line);
+        my @input = split('\|', $line);
+        foreach(split(' ', $input[1])) {
+                print substr($input[0], $_ -1, 1);
+        }
+        print "\n";
+}
