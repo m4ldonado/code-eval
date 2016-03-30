@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+my @fib = ();
+$fib[0] = 0;
+$fib[1] = 1;
+my @answers;
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  {   
+        $number = $line;
+        if($number < 2){
+                push(@answers, $fib[$number]);
+        }
+        elsif($number <= $#fib){
+                push(@answers, $fib[$number]);
+        }
+        else{
+                for($#fib + 1 .. $number){
+                        $fib[$_] = $fib[$_ - 1] + $fib[$_ - 2];
+                        push(@answers, $fib[$number]);
+                }
+        }
+}
+@answers = grep defined, @answers;
+print join("\n", @answers);
+}
