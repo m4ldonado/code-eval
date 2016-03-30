@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  {
+        chomp $line;
+        my $count = 0;
+        foreach(0 .. length($line) - 1){
+                my $temp = () = $line =~ /$_/gi;
+                if ($temp  == substr($line, $_, 1)){
+                        $count ++;
+                }
+        }
+        if($count == length($line)){
+                print "1 \n";
+        }
+        else{
+                print "0 \n";
+        }
+}
