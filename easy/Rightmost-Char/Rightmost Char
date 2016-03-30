@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  {   
+        chomp($line);
+        my @array = split(';', $line);
+        my @set1 = split(',', $array[0]);
+        my @set2 = split(',', $array[1]);
+        my %set1=map{$_ =>1} @set1;
+        my %set2=map{$_=>1} @set2;
+        my @answers = grep( $set1{$_}, @set2 );
+        $output = join(',', @answers);
+        print "$output \n";
+}
