@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+open(INFILE, "<"< $ARGV[0]);
+while( my $line = <INFILE>)  {
+        chomp $line;
+        my @input = split('\|', $line);
+        my @numbers1 = split(' ', $input[0]);
+        my @numbers2 = split(' ', $input[1]);
+        undef(my $answer);
+        foreach(0 .. $#numbers1){
+                $answer .= $numbers1[$_] * $numbers2[$_];
+                $answer .= " ";
+        }
+        $answer =~ s/ $//;
+        print "$answer \n";
+}
