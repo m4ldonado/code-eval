@@ -1,0 +1,58 @@
+#!/usr/bin/perl
+open(my $stuff, $ARGV[0]);
+while (my $line = <$stuff>) {
+	undef $output;
+	while ($line >= 1000) {
+		$output .= M;
+		$line -= 1000;
+	}
+	while ($line >= 900){
+		$output .= CM;
+		$line -= 900;
+	}
+	while ($line >= 500) {
+		$output .= D;
+		$line -= 500; 
+	}
+	while ($line >= 400) {
+		$output .= CD;
+		$line -= 400;
+	}
+	while ($line >= 100) {
+		$output .= C;
+		$line -= 100;
+	}
+	while ($line >= 90) {
+		$output .= XC;
+		$line -= 90;
+	}
+	while ($line >= 50) {
+		$output .= L;
+		$line -= 50;
+	}
+	while ($line >= 40) {
+		$output .= XL;
+		$line -= 40;
+	}
+	while ($line >= 10) {
+		$output .= X;
+		$line -= 10;
+	}
+	while ($line >= 9) {
+		$output .= IX;
+		$line -= 9;
+	}
+	while ($line >= 5) {
+		$output .= V;
+		$line -= 5;
+	}
+	while ($line >= 4) {
+		$output .= IV;
+		$line -= 4;
+	}
+	while ($line >= 1) {
+		$output .= I;
+		$line -= 1;
+	}
+	print $output, "\n";
+}
