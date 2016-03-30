@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        chomp($line);
+        if($line =~ m/[0-9]/ && $line =~ m/[a-z]/){
+                my @input = split(',', $line);
+                my @numbers = ();
+                my @words = ();
+                foreach(@input){
+                        if($_ =~ m/[0-9]/){
+                                push(@numbers, $_);
+                        }
+                        else{
+                                push(@words, $_);
+                        }
+                }
+                print join(',', @words), '|', join(',', @numbers), "\n";
+        }
+        else{
+                print $line, "\n";
+        }
+}
