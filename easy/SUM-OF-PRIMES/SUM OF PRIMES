@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+my @array=();
+$array[1] = 2;
+$array[2] = 3;
+my $count = 4;
+OUTER: until ($#array == 1000){
+               for(2 .. sqrt($count)){
+                       if($count % $_ == 0){
+                               $count++;
+                               next OUTER;
+                       }
+               }
+               push(@array, $count);
+               $count++;
+       }
+
+for(@array){
+        $sum += $_;
+}
+print "$sum \n"
