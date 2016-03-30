@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+open(INFILE, "<",  $ARGV[0]);
+while( my $line = <$stuff>)  {
+        $line =~ s/(\(|\)|,)//g;
+        my @numbers = split(' ', $line);
+        my $x = (($numbers[0] - $numbers[2]) ** 2);
+        my $y = (($numbers[1] - $numbers[3]) ** 2);
+        print sqrt($x + $y);
+        print "\n";
+}
