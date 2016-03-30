@@ -1,0 +1,7 @@
+#! /usr/bin/perl
+foreach my $number(1..12){
+        foreach(1..12){
+                printf"%4s", $number * $_;
+        }
+        print "\n";
+}
