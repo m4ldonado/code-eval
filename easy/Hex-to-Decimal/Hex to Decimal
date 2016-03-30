@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  {
+        chomp($line);
+        $line = reverse($line);
+        my $total = 0;
+        my @digits = split('', $line);
+        foreach(@digits){
+                s/a/10/;
+                s/b/11/;
+                s/c/12/;
+                s/d/13/;
+                s/e/14/;
+                s/f/15/;
+        }
+        foreach(0..$#digits){
+                $total += ((16 ** $_) * $digits[$_]);
+        }
+        print "$total \n";
+}
