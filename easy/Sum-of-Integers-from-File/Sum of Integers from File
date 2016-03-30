@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+my $answer;
+my $string = join("", <FILE>);
+my @array = split('\n', $string);
+foreach(@array){
+$answer += $_;
+}
+print "$answer \n"
