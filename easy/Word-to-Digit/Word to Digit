@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  {
+        chomp $line;
+        my @words = split(';', $line);
+        foreach(@words){
+                if($_ =~ m/zero/){
+                        print "0";
+                }
+                elsif($_ =~ m/one/){
+                        print "1";
+                }
+                elsif($_ =~ m/two/){
+                        print "2";
+                }
+                elsif($_ =~ m/three/){
+                        print "3";
+                }
+                elsif($_ =~ m/four/){
+                        print "4";
+                }
+                elsif($_ =~ m/five/){
+                        print "5";
+                }
+                elsif($_ =~ m/six/){
+                        print "6";
+                }
+                elsif($_ =~ m/seven/){
+                        print "7";
+                }
+                elsif($_ =~ m/eight/){
+                        print "8";
+                }
+                elsif($_ =~ m/nine/){
+                        print "9";
+                }
+        }
+        print "\n";
+}
