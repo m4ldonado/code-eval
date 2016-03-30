@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        chomp($line);
+        my @words = split(' ', $line);
+        foreach(@words){
+                $_ = ucfirst($_);
+        }
+        print join(' ', @words), "\n";
+}
