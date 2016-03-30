@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+my $answer;
+open(INFILE, "<"< $ARGV[0]);
+while( my $line = <INFILE>){
+        $answer = 0;
+        next if $line =~ /^$/m;
+        my @ids = $line =~ /{[a-z|"|:| |0-9|,]+?label/g;
+                foreach(@ids){
+                        $_ =~ s/\D+//g;
+                        $answer += $_;
+                }
+                print "$answer \n";
+        }
