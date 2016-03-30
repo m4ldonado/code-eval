@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  {
+        chomp($line);
+        my @list = split(' ', $line);
+        my @unique = ();
+        foreach(@list){
+                my $count = () = $line =~ /$_/gi;
+                if($count == 1){
+                        push (@unique, $_);
+                }
+        }
+        if(@unique){
+                @unique = sort @unique;
+                my( $index )= grep { $list[$_] eq $unique[0] } 0..$#list;
+                print $index + 1, "\n";
+        }
+        else{
+                print "0 \n";
+        }
+}
