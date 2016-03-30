@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+open(INFILE, "<",  $ARGV[0]);
+
+while( my $line = <INFILE>)  {
+        my @array = split(',', $line); 
+        my $count = 1;
+        if($array[1] >= $array[0]){
+                print "$array[1] \n";
+        }
+        while($count * $array[1] < $array[0]){  
+                $count++;
+        }
+        print $count * $array[1], "\n";
+}
