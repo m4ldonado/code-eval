@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+my @board = ();
+open(INFILE, "<", $file);
+while( my $line = <INFILE>)  {
+        chomp($line);
+        my @instructions = ();
+        @instructions = split(' ', $line);
+        my $answer = 0;
+        if ($instructions[0] =~ m/^SetCol$/){
+                foreach(0 .. 255){
+                        $board[$_][$instructions[1]] = $instructions[2];
+                }
+        }
+        elsif ($instructions[0] =~ m/^SetRow$/){
+                foreach(0..255){
+                        $board[$instructions[1]][$_] = $instructions[2];
+                }
+        }
+        elsif ($instructions[0] =~ m/^QueryCol$/){
+                foreach(0..255){
+                        $answer += $board[$_][$instructions[1]];
+                }
+                print $answer, "\n"
+        }
+        elsif ($instructions[0] =~ m/^QueryRow$/){
+                foreach(0..255){
+                        $answer += $board[$instructions[1]][$_];
+                }
+                print $answer, "\n";
+        }
+}
