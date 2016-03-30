@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+sub uniq {
+        my %seen;
+        grep !$seen{$_}++, @_;
+}       
+open(INFILE, "<", $ARGV[0];
+while( my $line = <INFILE>)  {   
+        chomp($line);
+        my @array = split(',', $line);
+        @array = uniq(@array);
+        my $output = join(',', @array);
+        print "$output \n";
+}
