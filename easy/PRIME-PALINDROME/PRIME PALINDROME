@@ -1,0 +1,12 @@
+#!/usr/bin/perl;
+my $biggest;
+Outer: foreach my $number(1 .. 1000){
+               next if($number % 2 == 0);
+               foreach my $factor(2 .. $number/2){
+                       next Outer if($number % $factor == 0);
+               }
+               if($number == reverse($number)){
+                       $biggest = $number;
+               }
+       }
+print $biggest, "\n";
