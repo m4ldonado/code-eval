@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        my @words = split(' ', $line);
+        @words = sort {length($b) <=> length($a)} @words;
+        print $words[0], "\n";
+}
