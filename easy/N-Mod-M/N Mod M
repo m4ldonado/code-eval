@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+use integer;
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  {
+        my @numbers = split(',', $line);
+        print $numbers[0] - ($numbers[0] / $numbers[1] * $numbers[1]), "\n";
+}
