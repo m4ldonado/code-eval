@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+use File::Glob;
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <$stuff>){
+	chomp($line);
+	my @input = split(',', $line);        
+	my @letters = split('', $input[1]);
+	my $glob = join(',', @letters);
+	substr($glob, 0, 0, '{');
+	$glob .= '}';
+	$glob = $glob x $input[0];
+	my @strings = glob($glob);
+	@strings = do { my %seen; grep { !$seen{$_}++ } @strings };
+	@strings = sort(@strings);
+	print join(',', @strings), "\n";
+}
