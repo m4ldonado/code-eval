@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+open(INFILE,"<", $ARGV[0]);
+while( my $line = <INFILE>){
+my $output = 'A';
+while($line-- > 1){
+		$output++;
+	}
+	print "$output \n";
+}
