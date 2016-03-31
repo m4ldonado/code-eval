@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        if($line >=0 && $line <=2){
+                print "Still in Mama's arms \n";
+        }
+        elsif($line >=3 && $line <= 4){
+                print "Preschool Maniac\n";
+        }
+        elsif($line >=5 && $line <= 11){
+                print "Elementary school\n";
+        }
+        elsif($line >=12 && $line <= 14){
+                print "Middle School\n";
+        }
+        elsif($line >=15 && $line <= 18){
+                print "High school\n";
+        }
+        elsif($line >=19 && $line <= 22){
+                print "College\n";
+        }
+        elsif($line >=23 && $line <= 65){
+                print "Working for the man\n";
+        }
+        elsif($line >=66 && $line <= 100){
+                print "The Golden Years\n";
+        }
+        else{
+                print "This program is for humans\n";
+        }
+}
