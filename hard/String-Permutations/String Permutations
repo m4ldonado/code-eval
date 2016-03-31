@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+sub permutation {
+	my ($perm,@set) = @_;
+	push(@answers, $perm) || return unless (@set);
+	permutation($perm.$set[$_],@set[0..$_-1],@set[$_+1..$#set]) foreach (0..$#set);
+}
+open(INFILE,"<", $ARGV[0]);
+while( my $line = <INFILE>){
+my @answers=();
+chomp($line);
+my @input = split('', $line);
+permutation('',@input);
+sort @answers;
+@answers = sort { $a cmp $b } @answers;
+print join(',', @answers), "\n";
+}
