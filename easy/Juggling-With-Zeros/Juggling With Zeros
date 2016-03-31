@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while(my $line = <INFILE>){
+        chomp $line;
+        my @binary_digits = ();
+        my @input = split(' ', $line);
+        for ($i=0; $i <= $#input; $i += 2) {
+                if($input[$i] =~ m/^0$/m){
+                        push(@binary_digits, 0 x length($input[$i + 1]));
+                }
+                else{
+                        push(@binary_digits, 1 x length($input[$i + 1]));
+                }
+        }
+        my $temp = join('', @binary_digits);
+        $temp =~ s/^0+?1/1/m;
+        $temp = reverse($temp);
+        my $answer = 0;
+        my $count = 0;
+        @binary_digits = split('', $temp);
+        foreach(@binary_digits){
+                $answer += (2 ** $count) * $_;
+                $count++;
+        }
+        print $answer, "\n";
+}
