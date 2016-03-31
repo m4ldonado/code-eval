@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        my @input = split('', $line);
+        my $count = 1;
+        foreach(@input){
+                if($_ =~ m/[a-z|A-Z]/){
+                        if($count % 2 == 0){
+                                print lc($_);
+                        }
+                        else{
+                                print uc($_);
+                        }
+                        $count++;
+                }
+                else{
+                        print $_;
+                }
+        }
+}
