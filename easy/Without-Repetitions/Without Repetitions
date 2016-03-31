@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        $line =~ s/(.)\1+/$1/g;
+        print $line;
+}
