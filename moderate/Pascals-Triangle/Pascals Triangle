@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+my @pascal;
+$pascal[0][0] = 1;
+open(INFILE,"<",$ARGV[0]);
+while( my $line = <INFILE>){
+        chomp($line);
+        foreach $n (1 .. $line -1){
+                $pascal[$n][0] = 1;
+                foreach $k (1 .. $line - 1){
+                        $pascal[$n][$k] = $pascal[$n][$k - 1] * (($n + 1 - $k)/$k);
+                }
+        }
+        foreach my $number (0..$line -1){
+                foreach (0 .. $number){
+                        print $pascal[$number][$_], " ";
+                }
+        }
+        print "\n";
+}
