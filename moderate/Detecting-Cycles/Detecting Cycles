@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while(my $line = <INFILE>){
+        chomp $line;
+        my $offset = -1;
+        my @numbers = split(' ', $line);
+        my $cycle_candidate = join ' ', splice(@numbers, $offset);
+        while($line !~ /$cycle_candidate $cycle_candidate$/){
+                @numbers = split(' ', $line);
+                $cycle_candidate = join ' ', splice(@numbers, $offset);
+                $offset--;
+        }
+        print $cycle_candidate, "\n";
+}
