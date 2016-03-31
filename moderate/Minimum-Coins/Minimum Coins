@@ -1,0 +1,17 @@
+open(INFILE,"<", $ARGV[0]);
+while( my $line = <INFILE>){
+        my $count = 0;
+        while($line >= 5){
+                $line -= 5;
+                $count++;
+        }
+        while($line >=3){
+                $line -= 3;
+                $count++;
+        }
+        while($line >= 1){
+                $line -= 1;
+                $count++;
+        }
+        print $count, "\n";
+}
