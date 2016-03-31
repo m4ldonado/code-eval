@@ -1,0 +1,8 @@
+#!/usr/bin/perl
+open my $stuff, $ARGV[0];
+while( my $line = <$stuff>)  {
+        my @input = split(' ', $line);
+        if($input[$#input] + 1 <= @input){
+                print $input[$#input - $input[$#input]], "\n";
+        }                               
+} 
