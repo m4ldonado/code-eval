@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while(my $line = <INFILE>) {
+        chomp $line;
+        my @input = split('\|', $line);
+        my @numbers = split(' ', $input[0]);
+        my $times = $input[1];
+        foreach(1..$times){
+                my $position = 0;       
+                until($numbers[$position] > $numbers[$position + 1]){
+                        $position++;
+                }
+                ($numbers[$position], $numbers[$position + 1]) = ($numbers[$position + 1], $numbers[$position]);
+        }
+        print join(' ', @numbers), "\n";
+}
