@@ -1,0 +1,56 @@
+#!/usr/bin/perl
+open(INFILE,"<", $ARGV[0]);
+while (my $line = <INFILE>) {
+next if($line =~ /^$/m);
+	chomp($line);	
+	my @matrix = ();	
+	my @input = split(';', $line);
+	my $count = 2;
+	foreach(split('', $input[0])){
+		$matrix[$count][0] = $_;
+		$count++
+	}
+	$count = 2;
+	foreach(split('', $input[1])){
+		$matrix[0][$count] = $_;
+		$count++;
+	}
+	foreach(1..length($input[1]) + 1 ){
+		$matrix[1][$_] = 0;
+	}
+	foreach(1..length($input[0]) + 1){
+		$matrix[$_][1] = 0;
+	}
+
+	foreach my $y_value(2..length($input[1]) + 1){
+		foreach my $x_value(2..length($input[0]) + 1){
+			if($matrix[$x_value][0] =~ /$matrix[0][$y_value]/){
+				$matrix[$x_value][$y_value] = $matrix[$x_value -1][$y_value -1] + 1;
+			}
+			elsif($matrix[$x_value][$y_value -1] > $matrix[$x_value -1][$y_value]){
+				$matrix[$x_value][$y_value] = $matrix[$x_value][$y_value -1];
+			}
+			else{
+				$matrix[$x_value][$y_value] = $matrix[$x_value -1][$y_value];
+			}
+		}
+	}
+	my $x_value = length($input[0]) + 1;
+	my $y_value = length($input[1]) + 1;
+	undef $answer;
+	while($matrix[$x_value][$y_value] != 0){
+		if($matrix[$x_value][$y_value] == $matrix[$x_value -1][$y_value]){
+			$x_value--;
+		}
+		elsif($matrix[$x_value][$y_value] == $matrix[$x_value][$y_value -1]){
+			$y_value--;
+		}
+		else{
+			$answer .= $matrix[$x_value][0];
+			$y_value--;
+			$x_value --;
+		}
+	}
+	$answer = reverse($answer);
+	print $answer, "\n";
+}
