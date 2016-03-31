@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+my $count = 0;
+my $number_of
+foreach(a..z){
+        $number_of{$_} = $count;
+        my $count++;
+}
+
+open(my $stuff, $ARGV[0]);
+while( my $line = <$stuff>){
+        my @numbers = split('', $line =~ s/\D+//gr);
+        my @equation = split('', $line =~ s/[0-9 | ' ']//gr);
+        foreach(@equation){
+                if($_ =~ m/[a-z]/){
+                        $_ = @numbers[$number_of{$_}];
+                }
+        }
+        my $sum = join('', @equation);
+        $sum =~ s/([+-])0(\d+)/$1$2/g;
+        print eval($sum), "\n";
+}
