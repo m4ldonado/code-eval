@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        my @input = split(', ', $line);
+        my @scrub = split('', $input[1]);
+        my $text = $input[0];
+        foreach(@scrub){
+                $text =~ s/$_//g;
+        }
+        print $text, "\n";
+}
