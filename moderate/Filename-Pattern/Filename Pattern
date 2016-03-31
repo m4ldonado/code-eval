@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while(my $line = <INFILE>){
+        chomp($line);
+        $line =~ /(.*?) (.*)/;
+        my $searchterm = $1;
+        my @files = split(' ', $2);
+        $searchterm =~ s/\./\\./g;
+        $searchterm =~ s/\?/./g;
+        $searchterm =~ s/\*$/*?/;
+        $searchterm =~ s/\*/.*/g;
+        $searchterm =~ s/$/\$/;
+        $searchterm =~ s/^/\^/;
+        my @matches = grep(/$searchterm/, @files);
+        if(@matches){
+                print join(' ', @matches), "\n";
+        }
+        else {
+                print "-\n";
+        }
+}
