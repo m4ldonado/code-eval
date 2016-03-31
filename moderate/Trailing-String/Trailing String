@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        chomp $line;
+        my @input = split(',', $line);
+        $input[1] = quotemeta($input[1]);
+        if( $input[0] =~ m/.*?$input[1]$/){
+                print "1 \n";
+        }
+        else{
+                print "0 \n";
+        }
+}
