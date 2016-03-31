@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  {
+chomp $line;
+my ($target) = $line =~ /;(.*)/;
+my $line =~ s/;.*//;
+my @numbers = split(',', $line);
+undef my ($output);
+foreach my $firstnumber(0  .. $#numbers){
+foreach my $secondnumber($firstnumber + 1 .. $#numbers){
+if($numbers[$firstnumber] + $numbers[$secondnumber] == $target){
+$output .= $numbers[$firstnumber]. ",". $numbers[$secondnumber]. ";";
+}}}
+$output =~ s/;$//m;
+$output =~ s/^$/NULL/;
+print "$output \n";
+}
