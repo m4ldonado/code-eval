@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+open(INFILE, '<', $ARGV[0]);
+while(my $line = <INFILE>){
+        $line =~ /([0-9-]+) ([0-9-]+) ([0-9-]+) ([0-9-]+)/;
+        if($1 == $3 && $2 == $4){
+                print "here\n";
+        }
+        elsif($3 == $1 && $4 > $2){
+                print "N\n";
+        }
+        elsif($3 > $1 && $4 > $2){
+                print "NE\n";
+        }
+        elsif($3 > $1 && $4 == $2){
+                print "E\n";
+        }
+        elsif($3 == $1 && $4 < $2){
+                print "S\n";
+        }
+        elsif($3 > $1 && $4 < $2){
+                print "SE\n";
+        }
+        elsif($3 < $1 && $4 < $2){
+                print "SW\n"
+        }
+        elsif($3 < $1 && $4 == $2){
+                print "W\n";
+        }
+        elsif($3 < $1 && $4 > $2){
+                print "NW\n";
+        }
+}
