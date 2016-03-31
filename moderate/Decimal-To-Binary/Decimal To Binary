@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+use integer;
+my $file = $ARGV[0];
+open(my $stuff, $file);
+while( my $line = <$stuff>)  {
+        chomp $line;
+        if($line == 0){
+                print "0";
+        }
+        undef my $binary;
+        while($line > 0){
+                $binary .= $line % 2;
+                $line = $line / 2;
+        }
+        $binary = reverse $binary;
+        print $binary, "\n";
