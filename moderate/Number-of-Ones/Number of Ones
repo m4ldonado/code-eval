@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+use integer;
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>)  {
+        my $binary;
+        chomp $line;
+        if($line == 0){
+                print "0 \n";
+        }
+        else{
+                undef $binary;
+                while($line > 0){
+                        $binary .= $line % 2;
+                        $line = $line / 2;
+                }
+                my $count = () = $binary =~ /1/gi;
+                print "$count \n";
+        }
+}
