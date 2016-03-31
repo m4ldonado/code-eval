@@ -1,0 +1,10 @@
+open(INFILE, "<", $ARGV[0]);
+while(my $line = <INFILE>){
+        chomp $line;
+        my @out = ();
+        my @array = split(' ', $line);
+        for( $i = $#array; $i >= 0; $i = $i -2){
+                push(@out,  $array[$i]);
+        }
+        print join(' ', @out),  "\n";
+}
