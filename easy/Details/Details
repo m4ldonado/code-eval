@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while(my $line = <INFILE>){
+        if($line =~ /XY/){
+                print "0\n";
+        }
+        else{
+                $line =~ s/[XY,]+/\n/sg;
+                my @dots = split('\n+', $line);
+                @dots = grep(/./, @dots);
+                @dots = sort{length($a) <=> length($b)} @dots;
+                print length($dots[0]), "\n";
+        }
+}
