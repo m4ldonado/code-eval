@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while(my $line = <INFILE>){
+        undef my $output;
+        foreach(a..z){
+                if($line !~ /$_/i){
+                        $output .= $_;
+                }
+        }
+        if (length $output){
+                print $output, "\n";
+        }
+        else{
+                print "NULL\n";
+        }
+}
