@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+use File::Glob;
+open(INFILE,"<", $ARGV[0]);
+while( my $line = <INFILE>){
+	chomp($line);
+	$line =~ s/0/{0}/g;
+	$line =~ s/1/{1}/g;
+	$line =~ s/2/{a,b,c}/g;
+	$line =~ s/3/{d,e,f}/g;
+	$line =~ s/4/{g,h,i}/g;
+	$line =~ s/5/{j,k,l}/g;
+	$line =~ s/6/{m,n,o}/g;
+	$line =~ s/7/{p,q,r,s}/g;
+	$line =~ s/8/{t,u,v}/g;
+	$line =~ s/9/{w,x,y,z}/g;
+	my @strings = glob($line);
+	print join(',', @strings), "\n";
+}
