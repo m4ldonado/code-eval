@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        my @list = split("; ", $line);
+                s/\D//g for @list;
+                        @list = sort {$a <=> $b} @list;
+                                print "$list[0],";
+                                        foreach(1 .. $#list - 1){
+                                                        print $list[$_] - $list[$_ -1], ",";
+                                                                }
+                                                                        print $list[$#list] - $list[$#list - 1], "\n";
+                                                                        }
