@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+$number = 0;
+foreach('a' .. 'j'){
+        $letter_numbers{$_} = $number;
+        $number ++;
+}
+open(INFILE, "<"< $ARGV[0]);
+while (my $line = <INFILE>) {
+        @temp = ();
+        if ($line =~ m/[a-j0-9]/){
+                $line =~ s/[^a-j0-9]//g;
+                @temp = split('', $line);
+                foreach(@temp){
+                        if($_ =~ m/\d/){
+                                print $_;
+                        }
+                        else{
+                                print $letter_numbers{$_};
+                        }               
+                }
+        }
+        else{
+                print "NONE";
+        }
+        print "\n";
+}
