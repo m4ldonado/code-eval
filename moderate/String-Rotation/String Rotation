@@ -1,0 +1,21 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while($line = <INFILE>){
+	chomp $line;
+	my @input = split(',', $line);
+	$input[1] = quotemeta($input[1]);
+	my $length = length($input[0]);
+	$input[0] = $input[0] x length($input[0]);
+	my @rotations = ();
+	foreach(1..$length){
+		push(@rotations, substr($input[0], $_, $length));
+	}
+
+
+	if(grep(/$input[1]/, @rotations)){
+		print "True \n";
+	}
+	else{
+		print "False \n";
+	}
+}
