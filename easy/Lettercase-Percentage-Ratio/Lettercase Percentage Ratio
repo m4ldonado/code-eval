@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while (my $line = <INFILE>) {
+        chomp($line);
+        my $upper = 0;
+        my $lower = 0;
+        my @input = split('', $line);
+        foreach(@input){
+                if($_ =~ m/[a-z]+/){
+                        $lower++;
+                }
+                else{
+                        $upper++;
+                }
+        }
+        my $percentage_lower = ($lower / ($lower + $upper) * 100);
+        my $percentage_upper = ($upper / ($lower + $upper) * 100);
+        print "lowercase: ";
+        printf("%.2f", $percentage_lower);
+        print " uppercase: ";
+        printf("%.2f", $percentage_upper);
+        print "\n";
+}
