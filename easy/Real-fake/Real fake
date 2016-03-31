@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while(my $line = <INFILE>){
+        my $total  = 0;
+        chomp $line;
+        $line =~ s/ //g;
+        for(my $i = 0; $i < length($line); $i += 2){
+                $total += 2 * substr($line, $i, 1);
+                $total += substr($line, $i + 1, 1);
+        }
+        if($total % 10 == 0){
+                print "Real\n";
+        }
+        else{
+                print "Fake\n";
+        }
+}
