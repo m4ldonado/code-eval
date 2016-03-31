@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+        chomp($line);
+        my @output = ();
+        my @input = split(' ', $line);
+        foreach(@input){
+                $_ =~ /(\d+)(\w*)(\d+)/;
+                my $word = $3 . $2 .  $1;
+                push(@output, $word);
+        }
+        print join(' ', @output), "\n";
+}
