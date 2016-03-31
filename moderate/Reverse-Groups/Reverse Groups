@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while(my $line = <INFILE>){
+        chomp $line;
+        $line =~ /(.*)?;(\d+)/;
+        my @numbers = split(',', $1);
+        my $length = $2;
+        my $times = @numbers / $2;
+        my $index = 0;
+        foreach(0..$times -1){
+                @numbers[$index .. $index + $length - 1] = reverse(@numbers[$index .. $index + $length - 1]);
+                $index += $length;
+        }
+        print join(',', @numbers), "\n";
+}
