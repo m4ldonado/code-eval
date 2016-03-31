@@ -1,0 +1,18 @@
+
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+OUTER: while (my $line = <INFILE>) {
+               chomp($line);
+               @numbers = split(',', $line);
+               $l = $#numbers + 1;
+               my @unique_numbers = do { my %seen; grep { !$seen{$_}++ } @numbers };
+               @matches = ();
+               foreach $search(@unique_numbers){
+                       @matches = grep({$search == $_} @numbers);
+                       if($#matches + 1 > $l / 2){
+                               print "$search \n";
+                               next OUTER;
+                       }
+               }
+                       print "None \n";
+       }
