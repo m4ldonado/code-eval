@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while(my $line = <INFILE>){
+	$line =~ /(\d+),(\d+)/;
+	my @order = ();
+	my @prisoner = 0 .. $1 - 1;
+	my $k = $2;
+	until (@prisoner == 0) {
+		push @prisoner, shift @prisoner for 1 .. $k-1;
+		push(@order,   shift @prisoner);
+	}
+	print join(' ', @order), "\n"
+}
