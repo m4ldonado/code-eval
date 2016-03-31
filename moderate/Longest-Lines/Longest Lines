@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+my $text = join("", <FILE>);
+my @lines = split('\n', $text);
+my $number = shift @lines;
+@lines = sort {length($b) <=> length($a)} @lines;
+foreach (0 .. $number - 1){
+        print $lines[$_], "\n";
+}
