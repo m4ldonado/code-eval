@@ -1,0 +1,12 @@
+#! /usr/bin/perl
+open(INFILE,"<",$ARGV[0]);
+while (my $line = <INFILE>) {
+	chomp($line);	
+	$line =~ /;(.+?)$/m;
+	my @array = split(',', $1);	
+	my %seen;
+	foreach $string(@array){
+		next unless $seen{$string}++;
+		print $string, "\n";	
+	}
+}
