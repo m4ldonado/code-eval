@@ -1,0 +1,48 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+while( my $line = <INFILE>){
+	chomp($line);
+	$line =~ s/  / space /g;
+	@list = split(' ', $line);
+	s/^-$/T/m for @list;
+	s/^--$/M/m for @list;
+	s/^-\.$/N/m for @list;
+	s/^---$/O/m for @list;
+	s/^--\.$/G/m for @list;
+	s/^-\.-$/K/m for @list;
+	s/^-\.\.$/D/m for @list;
+	s/^space$/ /m for @list;
+	s/^---\.$/./m for @list;
+	s/^--\.-$/Q/m for @list;
+	s/^--\.\.$/Z/m for @list;
+	s/^-\.--$/Y/m for @list;
+	s/^-\.-\.$/C/m for @list;
+	s/^-\.\.-$/X/m for @list;
+	s/^-\.\.\.$/B/m for @list;
+	s/^-----$/0/m for @list;
+	s/^----\.$/9/m for @list;
+	s/^---\.\.$/8/m for @list;
+	s/^--\.\.\.$/7/m for @list;
+	s/^-\.\.\.\.$/6/m for @list;
+	s/^\.$/E/m for @list;
+	s/^\.-$/A/m for @list;
+	s/^\.\.$/I/m for @list;
+	s/^\.--$/W/m for @list;
+	s/^\.-\.$/R/m for @list;
+	s/^\.\.-$/U/m for @list;
+	s/^\.\.\.$/S/m for @list;
+	s/^\.---$/J/m for @list;
+	s/^\.--\.$/P/m for @list;
+	s/^\.-\.\.$/L/m for @list;
+	s/^\.\.--$/-/m for @list;
+	s/^\.\.-\.$/F/m for @list;
+	s/^\.\.\.-$/V/m for @list;
+	s/^\.\.\.\.$/H/m for @list;
+	s/^\.----$/1/m for @list;
+	s/^\.\.---$/2/m for @list;
+	s/^\.\.\.--$/3/m for @list;
+	s/^\.\.\.\.-$/4/m for @list;
+	s/^\.\.\.\.\.$/5/m for @list;
+	print $_ for @list;
+	print "\n";
+}
