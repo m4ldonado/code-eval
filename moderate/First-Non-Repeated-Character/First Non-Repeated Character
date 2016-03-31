@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+open(INFILE, "<", $ARGV[0]);
+OUTER: while( my $line = <INFILE>){
+               chomp $line;
+               @letters = split('', $line);
+               foreach(@letters){
+                       my $matches = () = $line =~ m/$_/g;             
+                       if($matches == 1){
+                               print "$_ \n";
+                               next OUTER;
+                       }                       
+               }
+       }
