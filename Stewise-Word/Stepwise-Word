@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+open(my $file, '<', $ARGV[0]);
+while(my $line = <$file>){
+        @words = split ' ', $line;
+        @words = sort { length $b <=> length $a } @words;
+        @longestword = split '', $words[0];
+        foreach(0..$#longestword){
+                $longestword[$_] =  '*' x $_ . "$longestword[$_]";
+        }
+        print join(' ', @longestword) . "\n";
+}
