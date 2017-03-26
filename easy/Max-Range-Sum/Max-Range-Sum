@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+open(my $file, '<', $ARGV[0]);
+while(my $line = <$file>){
+        chomp($line);
+        $line =~ /(.*);(.*)/;
+        $days = $1;
+        @array = split(' ', $2);
+        my @sums = ();
+        foreach my $start (0..$#array - $days + 1){
+                my $total = 0;
+                foreach my $index ($start..$start + $days - 1){
+                        $total += $array[$index];
+                }
+                push @sums, $total;
+        }
+        @sums = sort { $b <=> $a } @sums;
+        print $sums[0] > 0 ? $sums[0] : 0 ;
+        print "\n";
+}
