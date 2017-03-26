@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+
+open(my $fh, '<', $ARGV[0]);
+while(my $line = <$fh>){
+        chomp($line);
+        my $numOfErrors = 0;
+        @input = split(' \| ', $line);
+        @first = split('', $input[0]);
+        @second = split('', $input[1]);
+        foreach(0..$#first){
+                $numOfErrors++ if($first[$_] ne $second[$_]);
+        }
+        if($numOfErrors == 0){
+                print "Done\n";
+        }
+        elsif($numOfErrors <= 2){
+                print "Low\n";
+        }
+        elsif($numOfErrors <= 4){
+                print "Medium\n";
+        }
+        elsif($numOfErrors <= 6){
+                print "High\n";
+        }
+        else{
+                print "Critical\n";
+        }
+}
