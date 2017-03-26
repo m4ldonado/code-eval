@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+
+sub convertToSec { 
+		  shift =~ /(\d+):(\d+):(\d+)/;
+		  return $1 * 3600 + $2 * 60 + $3;
+}
+
+sub convertFromSec { 
+		  my $seconds = shift;
+		  my($hours,$minutes);
+		  while($seconds >= 3600){
+					 $hours++;
+					 $seconds -= 3600;
+		  }
+		  while($seconds >= 60){
+					 $minutes++;
+					 $seconds -= 60;
+		  }
+		  return sprintf("%02u:%02u:%02u",$hours,$minutes,$seconds);
+}
+
+open(my $file, '<', $ARGV[0]);
+while(my $input = <$file>){
+		  chomp($input);
+		  @times = split(' ', $input);
+		  print &convertFromSec(abs(&convertToSec($times[0]) - &convertToSec($times[1]))) . "\n";
+}
